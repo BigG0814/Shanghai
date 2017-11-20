@@ -33,21 +33,11 @@ namespace WorkScheduleSystem.BLL
         }
 
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public List<EmployeeBySkills> Employees_List()
+        public List<EmployeeSkills> Employees_List()
         {
             using (var context = new WorkScheduleContext())
             {
-                var results = from x in context.EmployeeSkills
-                              select new EmployeeBySkills
-                              {
-                                  ID = x.EmployeeID,
-                                  Name = x.Employees.LastName + "," + x.Employees.FirstName,
-                                  SkillName = x.Skills.Description,
-                                  SkillLevel = x.Level,
-                                  YOE = x.YearsOfExperience,
-                                  HourlyWage =x.HourlyWage
-                              };
-                return results.ToList();
+                return context.EmployeeSkills.ToList();
             }
         }
 
