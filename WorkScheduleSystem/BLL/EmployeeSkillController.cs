@@ -32,6 +32,26 @@ namespace WorkScheduleSystem.BLL
             }
         }
 
+        //[DataObjectMethod(DataObjectMethodType.Select, false)]
+        //public List<EmployeeBySkills> EmployeeSkill_List()
+        //{
+        //    using (var context = new WorkScheduleContext())
+        //    {
+        //        var results = from x in context.EmployeeSkills
+        //                      select new EmployeeBySkills
+        //                      {
+        //                          ID = x.EmployeeID,
+        //                          Employee = x.Employees.LastName + "," + x.Employees.FirstName,
+        //                          Skill =x.Skills.Description,
+        //                          Phone = x.Employees.HomePhone,
+        //                          Active = x.Employees.Active,
+        //                          SkillLevel = x.Level,
+        //                          YOE = x.YearsOfExperience
+        //                      };
+        //        return results.ToList();
+        //    }
+        //}
+
         [DataObjectMethod(DataObjectMethodType.Select, false)]
         public List<EmployeeSkills> Employees_List()
         {
