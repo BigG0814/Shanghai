@@ -33,6 +33,9 @@ namespace WorkScheduleSystem.BLL
         }
 
         //[DataObjectMethod(DataObjectMethodType.Select, false)]
+
+
+        //[DataObjectMethod(DataObjectMethodType.Select, false)]
         //public List<EmployeeBySkills> EmployeeSkill_List()
         //{
         //    using (var context = new WorkScheduleContext())
@@ -52,7 +55,25 @@ namespace WorkScheduleSystem.BLL
         //    }
         //}
 
+        //[DataObjectMethod(DataObjectMethodType.Select, false)]
+
         [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<EmployeeSkillReport> EmployeeSkillReport_Get()
+        {
+            using (var context = new WorkScheduleContext())
+            {
+                var results = from x in context.EmployeeSkills
+                              select new EmployeeSkillReport
+                              {
+                                  Skill = x.Skills.Description,
+                                  Name = x.Employees.FirstName + "," + x.Employees.LastName,
+                                  Phone = x.Employees.HomePhone,
+                                  Level = x.Level == 1 ? "Novice" : x.Level == 2 ? "Proficient" : "Expert",
+                                  YOE = x.YearsOfExperience
+                              };
+                return results.ToList();
+            }
+        }
         public List<EmployeeSkills> Employees_List()
         {
             using (var context = new WorkScheduleContext())

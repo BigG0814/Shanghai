@@ -63,6 +63,7 @@
     <Compile Include="Entities\EmployeeSkills.cs" />
     <Compile Include="Entities\Skills.cs" />
     <Compile Include="POCOs\EmployeeBySkills.cs" />
+    <Compile Include="POCOs\EmployeeSkillReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

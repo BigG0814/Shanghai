@@ -29,7 +29,7 @@
                                       <asp:CheckBoxField DataField="Active" HeaderText="Active" SortExpression="Active"></asp:CheckBoxField>
                                       <asp:BoundField DataField="SkillLevel" HeaderText="SkillLevel" SortExpression="SkillLevel"></asp:BoundField>
                                       <asp:BoundField DataField="YOE" HeaderText="YOE" SortExpression="YOE"></asp:BoundField>
-                                      <asp:BoundField DataField="HourlyWage" HeaderText="HourlyWage" SortExpression="HourlyWage"></asp:BoundField>
+
                                   </Columns>
                                   <EditRowStyle BackColor="#2461BF"></EditRowStyle>
 
