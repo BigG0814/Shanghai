@@ -99,6 +99,16 @@
                                           <td>
                                               <asp:Label Text='<%# Eval("Level") %>' runat="server" ID="LevelLabel" />
                                               <%--<asp:CheckBoxList ID="CheckBoxList1" runat="server"></asp:CheckBoxList>--%>
+                                              <%--<asp:RadioButtonList ID="RadioButtonList1" runat="server"
+                                                  SelectedValue='<%# Eval("Level") %>'
+                                                  RepeatDirection="Horizontal"
+                                                  RepeatColumns="1"
+                                                  Enabled="False">
+                                                    <asp:ListItem>Novice</asp:ListItem>
+                                                    <asp:ListItem>Proficient</asp:ListItem>
+                                                    <asp:ListItem>Expert</asp:ListItem>
+                                              </asp:RadioButtonList>--%>
+                                              
                                           </td>
                                           <td align="center">
                                               <asp:Label Text='<%# Eval("YearsOfExperience") %>' runat="server" ID="YearsOfExperienceLabel" /></td>
@@ -305,6 +315,7 @@
                                       </tr>
                                   </SelectedItemTemplate>
                               </asp:ListView>
+
                               <asp:ObjectDataSource runat="server" ID="SkillODS" 
                                   OldValuesParameterFormatString="original_{0}" 
                                   SelectMethod="Skills_List" 

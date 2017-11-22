@@ -34,6 +34,23 @@ namespace WorkScheduleSystem.BLL
 
         //[DataObjectMethod(DataObjectMethodType.Select, false)]
 
+        //public List<EmployeeBySkills> Level_Get()
+        //{
+        //    using (var context = new WorkScheduleContext())
+        //    {
+        //        var results = from x in context.EmployeeSkills
+        //                      where 
+        //                      select new EmployeeBySkills
+        //                      {
+        //                          Level = x.Level ,
+        //                          LevelName = x.Level == 1 ? "Novice" : x.Level == 2 ? "Proficient" : "Expert"
+        //                      };
+        //        return results.ToList();
+        //    }
+        //}
+
+        //[DataObjectMethod(DataObjectMethodType.Select, false)]
+
 
         //[DataObjectMethod(DataObjectMethodType.Select, false)]
         //public List<EmployeeBySkills> EmployeeSkill_List()
@@ -56,7 +73,7 @@ namespace WorkScheduleSystem.BLL
         //}
 
         //[DataObjectMethod(DataObjectMethodType.Select, false)]
-
+        #region Report query
         [DataObjectMethod(DataObjectMethodType.Select, false)]
         public List<EmployeeSkillReport> EmployeeSkillReport_Get()
         {
@@ -74,6 +91,9 @@ namespace WorkScheduleSystem.BLL
                 return results.ToList();
             }
         }
+        #endregion
+
+        #region CRUD
         public List<EmployeeSkills> Employees_List()
         {
             using (var context = new WorkScheduleContext())
@@ -127,6 +147,8 @@ namespace WorkScheduleSystem.BLL
         {
             return EmployeeSkills_Delete(item.EmployeeSkillID);
         }
+
+        #endregion
 
     }
 }
