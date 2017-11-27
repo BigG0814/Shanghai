@@ -32,22 +32,21 @@ namespace WorkScheduleSystem.BLL
             }
         }
 
-        //[DataObjectMethod(DataObjectMethodType.Select, false)]
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
 
-        //public List<EmployeeBySkills> Level_Get()
-        //{
-        //    using (var context = new WorkScheduleContext())
-        //    {
-        //        var results = from x in context.EmployeeSkills
-        //                      where 
-        //                      select new EmployeeBySkills
-        //                      {
-        //                          Level = x.Level ,
-        //                          LevelName = x.Level == 1 ? "Novice" : x.Level == 2 ? "Proficient" : "Expert"
-        //                      };
-        //        return results.ToList();
-        //    }
-        //}
+        public List<EmployeeBySkills> Level_Get(int employeeid)
+        {
+            using (var context = new WorkScheduleContext())
+            {
+                var results = from x in context.EmployeeSkills
+                              where x.EmployeeID.Equals(employeeid)
+                              select new EmployeeBySkills
+                              {
+                                  Level = x.Level                                  
+                              };
+                return results.ToList();
+            }
+        }
 
         //[DataObjectMethod(DataObjectMethodType.Select, false)]
 

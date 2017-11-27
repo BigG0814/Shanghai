@@ -62,7 +62,8 @@
                   <div class="tab-pane fade in active" id="listviewcrud">
                       <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                           <ContentTemplate>
-                              <asp:ListView ID="ListView1" runat="server" DataSourceID="EmployeeSkillsODS" InsertItemPosition="LastItem">
+                              <asp:ListView ID="ListView1" runat="server" DataSourceID="EmployeeSkillsODS" 
+                                  InsertItemPosition="LastItem" DataKeyNames="EmployeeSkillID">
 
                                   <AlternatingItemTemplate>
                                       <tr style="background-color: #FFF8DC;">
@@ -98,17 +99,7 @@
                                           </td>
                                           <td>
                                               <asp:Label Text='<%# Eval("Level") %>' runat="server" ID="LevelLabel" />
-                                              <%--<asp:CheckBoxList ID="CheckBoxList1" runat="server"></asp:CheckBoxList>--%>
-                                              <%--<asp:RadioButtonList ID="RadioButtonList1" runat="server"
-                                                  SelectedValue='<%# Eval("Level") %>'
-                                                  RepeatDirection="Horizontal"
-                                                  RepeatColumns="1"
-                                                  Enabled="False">
-                                                    <asp:ListItem>Novice</asp:ListItem>
-                                                    <asp:ListItem>Proficient</asp:ListItem>
-                                                    <asp:ListItem>Expert</asp:ListItem>
-                                              </asp:RadioButtonList>--%>
-                                              
+                                   
                                           </td>
                                           <td align="center">
                                               <asp:Label Text='<%# Eval("YearsOfExperience") %>' runat="server" ID="YearsOfExperienceLabel" /></td>
@@ -118,7 +109,7 @@
                                       </tr>
                                   </AlternatingItemTemplate>
                                   <EditItemTemplate>
-                                      <tr style="background-color: #008A8C; color: #FFFFFF;">
+                                      <tr style="background-color: #008A8C; color: #000000;">
                                           <td>
                                               <asp:Button runat="server" CommandName="Update" Text="Update" ID="UpdateButton" />
                                               <asp:Button runat="server" CommandName="Cancel" Text="Cancel" ID="CancelButton" />
@@ -315,7 +306,7 @@
                                       </tr>
                                   </SelectedItemTemplate>
                               </asp:ListView>
-
+                              
                               <asp:ObjectDataSource runat="server" ID="SkillODS" 
                                   OldValuesParameterFormatString="original_{0}" 
                                   SelectMethod="Skills_List" 
