@@ -71,7 +71,13 @@ namespace WorkScheduleSystem.BLL
         //    }
         //}
 
-        //[DataObjectMethod(DataObjectMethodType.Select, false)]
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+
+        public void Register_Employee(Employees employee, List<Skills> skills)
+        {
+
+        }
+
         #region Report query
         [DataObjectMethod(DataObjectMethodType.Select, false)]
         public List<EmployeeSkillReport> EmployeeSkillReport_Get()
