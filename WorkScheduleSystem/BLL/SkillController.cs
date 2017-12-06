@@ -17,14 +17,7 @@ namespace WorkScheduleSystem.BLL
         {
             using (var context = new WorkScheduleContext())
             {
-                var results = from x in context.Skills
-                              orderby x.Description
-                              select new Skills
-                              {
-                                  SkillID = x.SkillID,
-                                  Description = x.Description
-                              };
-                return results.ToList();
+                return context.Skills.ToList();
             }
         }
 

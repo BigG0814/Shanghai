@@ -25,5 +25,6 @@ namespace WorkSchedule.Data.Entities
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EmployeeSkills> EmployeeSkills { get; set; }
+        
     }
 }
