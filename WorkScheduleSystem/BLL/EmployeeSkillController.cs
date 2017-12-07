@@ -48,36 +48,7 @@ namespace WorkScheduleSystem.BLL
             }
         }
 
-        public List<SkillSet> Skills_List(string firstname, string lastname, string homephone,
-            string skillname, int level, int? yoe, decimal hourlywage)
-        {
-            using (var context = new WorkScheduleContext())
-            {
-                var results = (from x in context.Employees
-                              where x.FirstName.Equals(firstname)
-                                && x.LastName.Equals(lastname)
-                                && x.HomePhone.Equals(homephone)
-                              select x).FirstOrDefault();
-                if (results == null)
-                {
-                    return null;
-                }
-                else
-                {
-                    var theSkills = from x in context.EmployeeSkills
-                                  orderby x.Skills.Description
-                                  select new SkillSet
-                                  {
-                                      SkillId = x.SkillID,
-                                      SkillName = x.Skills.Description,
-                                      Level = x.Level,
-                                      YOE = x.YearsOfExperience,
-                                      HourlyWage = x.HourlyWage
-                                  };
-                    return theSkills.ToList();
-                }                                  
-            }
-        }
+        
 
         public List<SkillSet> Register_Employee(string firstname, string lastname, string homephone,
             string skillname, int level, int? yoe, decimal hourlywage, int skillid)
