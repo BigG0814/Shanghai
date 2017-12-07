@@ -28,5 +28,16 @@ namespace WorkScheduleSystem.BLL
                 return context.Employees.Find(employeeid);
             }
         }
+
+        [DataObjectMethod(DataObjectMethodType.Insert, false)]
+        public int Employee_Add(Employees item)
+        {
+            using (var context = new WorkScheduleContext())
+            {
+                item = context.Employees.Add(item);
+                context.SaveChanges();
+                return item.EmployeeID;
+            }
+        }
     }
 }

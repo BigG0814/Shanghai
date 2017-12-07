@@ -22,7 +22,7 @@ namespace WorkScheduleSystem.BLL
                               select new SkillSet
                               {
                                   SkillId = x.SkillID,
-                                  SkillName = x.Description
+                                  SkillName = x.Description                              
                               };
                 return results.ToList();
             }

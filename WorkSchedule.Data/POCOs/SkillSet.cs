@@ -10,7 +10,7 @@ namespace WorkSchedule.Data.POCOs
     {
         public int SkillId { get; set; }
         public string SkillName { get; set; }
-        public int Level { get; set; }
+        public int SkillLevel { get; set; }
         public int? YOE { get; set; }
         public decimal HourlyWage { get; set; }
     }

@@ -48,103 +48,7 @@ namespace WorkScheduleSystem.BLL
             }
         }
 
-        
-
-        public List<SkillSet> Register_Employee(string firstname, string lastname, string homephone,
-            string skillname, int level, int? yoe, decimal hourlywage, int skillid)
-        {
-            using (var context = new WorkScheduleContext())
-            {
-                //code to go here
-                //Part One:
-                //query to get the playlist id
-                var exists = (from x in context.Employees
-                              where x.FirstName.Equals(firstname)
-                                && x.LastName.Equals(lastname)
-                                && x.HomePhone.Equals(homephone)
-                              select x).FirstOrDefault();
-
-                //initialize the tracknumber
-                int employeeskillnumber = 0;
-                //I will need to create an instance of PlaylistTrack
-                EmployeeSkills newemployeeskill = null;
-
-                //determine if a playlist "parent" instances needs to be
-                // created
-                if (exists == null)
-                {
-                    //this is a new playlist
-                    //create an instance of playlist to add to Playlist tablge
-                    exists = new Employees();
-                    exists.FirstName = firstname;
-                    exists.LastName = lastname;
-                    exists.HomePhone = homephone;
-                    exists = context.Employees.Add(exists);
-                    //at this time there is NO phyiscal pkey
-                    //the psuedo pkey is handled by the HashSet
-                    employeeskillnumber = 1;
-                }
-                else
-                {
-                    //playlist exists
-                    //I need to generate the next track number
-                    employeeskillnumber = exists.EmployeeSkills.Count() + 1;
-
-                    //validation: in our example a track can ONLY exist once
-                    //   on a particular playlist
-                    newemployeeskill = exists.EmployeeSkills.SingleOrDefault(x => x.SkillID == skillid);
-                    if (newemployeeskill != null)
-                    {
-                        throw new Exception("Employeelist already has requested Skill.");
-                    }
-                }
-
-                //Part Two: Add the PlaylistTrack instance
-                //use navigation to .Add the new track to PlaylistTrack
-                newemployeeskill = new EmployeeSkills();
-                newemployeeskill.SkillID = skillid;
-                newemployeeskill.Skills.Description = skillname;
-                newemployeeskill.Level = level;
-                newemployeeskill.YearsOfExperience = yoe;
-                newemployeeskill.HourlyWage = hourlywage;
-
-                //NOTE: the pkey for PlaylistId may not yet exist
-                //   using navigation one can let HashSet handle the PlaylistId
-                //   pkey value
-                exists.EmployeeSkills.Add(newemployeeskill);
-
-                //physically add all data to the database
-                //commit
-                context.SaveChanges();
-                return Skills_List(firstname, lastname, homephone, skillname, level, yoe, hourlywage);
-            }
-        }//eom
-
-
-        //[DataObjectMethod(DataObjectMethodType.Select, false)]
-
-
-        //[DataObjectMethod(DataObjectMethodType.Select, false)]
-        //public List<EmployeeBySkills> EmployeeSkill_List()
-        //{
-        //    using (var context = new WorkScheduleContext())
-        //    {
-        //        var results = from x in context.EmployeeSkills
-        //                      select new EmployeeBySkills
-        //                      {
-        //                          ID = x.EmployeeID,
-        //                          Employee = x.Employees.LastName + "," + x.Employees.FirstName,
-        //                          Skill =x.Skills.Description,
-        //                          Phone = x.Employees.HomePhone,
-        //                          Active = x.Employees.Active,
-        //                          SkillLevel = x.Level,
-        //                          YOE = x.YearsOfExperience
-        //                      };
-        //        return results.ToList();
-        //    }
-        //}
-
-
+    
 
         #region Report query
         [DataObjectMethod(DataObjectMethodType.Select, false)]
@@ -223,5 +127,37 @@ namespace WorkScheduleSystem.BLL
 
         #endregion
 
+        #region Transaction
+        public void Register_Employee(Employees employee, List<SkillSet> skills)
+        {
+            using (var context = new WorkScheduleContext())
+            {
+                EmployeeController sysmgr = new EmployeeController();
+
+                int employeeid = sysmgr.Employee_Add(employee);
+
+                if (employee == null)
+                {
+                    throw new Exception("No employee id");
+                }
+                else
+                {
+                    foreach (SkillSet item in skills)
+                    {
+                        EmployeeSkills newEmployeeSkill = new EmployeeSkills();
+
+                        newEmployeeSkill.EmployeeID = employeeid;
+                        newEmployeeSkill.SkillID = item.SkillId;
+                        newEmployeeSkill.Level = item.SkillLevel;
+                        newEmployeeSkill.YearsOfExperience = item.YOE;
+                        newEmployeeSkill.HourlyWage = item.HourlyWage;
+                        EmployeeSkills_Add(newEmployeeSkill);
+                    }
+                }
+                context.SaveChanges();
+            }
+        }
+
+        #endregion
     }
 }
