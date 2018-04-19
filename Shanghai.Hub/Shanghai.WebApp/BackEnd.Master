@@ -1,0 +1,183 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="BackEnd.master.cs" Inherits="Shanghai.WebApp.BackEnd" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shanghai Leduc</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="~/Content/masterstyles.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <%--FONT LINKS--%>
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" />
+
+    <style>
+        body{
+            font-size: 125%;
+        }
+        .ddMenu{
+            left: auto !important;
+            width: 210px;
+        }
+        .ddItem{
+            margin-top: 0;
+            text-align: left;
+        }
+        ul li ul li{
+            width: 100%;
+            display: inline-block;
+        }
+    </style>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+        <asp:ScriptManager runat="server" ID="ScriptManager1">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="respond" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+                <asp:ScriptReference Path="~/Scripts/raphael-min.js" />
+                <asp:ScriptReference Path="~/Scripts/main.js" />
+            </Scripts>
+        </asp:ScriptManager>
+
+       
+    <%-- This is where you should place your header code --%>
+    <%--<header>
+ 
+         <div class="red-bkg">
+                <div class="container clearfix headerContainer">
+                    <img class="headerLogo" runat="server" title="shanghai-logo" src="images/shanghai-horizontal.png" />
+                    
+                    <div class="pageTitle"><h2>Welcome To <span>Shanghai Leduc</span></h2></div>
+
+                    <a href="#" class="menu-btn"><i class="fa fa-bars" aria-hidden="true"></i></a>
+                    <nav class="clearfix">
+                        
+                           
+
+                   
+                        <ul runat="server" class="clearfix">
+                            <li><a runat="server" href="~/">Home</a></li>
+
+                            <li><a runat="server" href="~/BackEnd_Page/ViewSchedule.aspx">Scheduling</a></li>
+                            <li><a runat="server" href="~/POS/SeatingChart.aspx">POS</a></li>
+                            <li><a ID="A0" runat="server" href="#" class="dropdown-toggle" data-toggle="dropdown">Admin<span class="caret"></span></a>
+                                <ul class="dropdown-menu ddMenu">
+                                  <li><a class="ddItem" runat="server" ID="A1" href="~/BackEnd_Page/Add_Employee">Employee Management</a></li>
+                                  <li><a class="ddItem" runat="server" ID="A2" href="~/BackEnd_Page/EditMenuItem.aspx">Menu Item Management</a></li>
+                                    <li><a class="ddItem" runat="server" ID="A3" href="~/BackEnd_Page/Edit_Job_Types">Job Type Management</a></li>
+                                    <li><a class="ddItem" runat="server" ID="A4" href="~/BackEnd_Page/Report.aspx">Report</a></li>
+                                </ul>
+                            </li>
+                            <li><a runat="server" href="~/Account/ManagePassword">Settings <i class="fa fa-cog"></i></a></li>
+                            
+                            <li><a runat="server" href="#" onserverclick="LogOut">Log Out</a></li>
+
+                            
+                        </ul>
+                        
+                    
+                    </nav>
+
+                </div> 
+            </div>
+
+    </header>
+        <!--Toggle for hamburger menu -->
+         <script>
+            $('.menu-btn').click(function (e) {
+
+                $('nav').toggle();
+                e.preventDefault();
+            })
+        </script>--%>
+        <style>
+            body{
+                background-color:black;
+            }
+        </style>
+    <%-- This is the webpage body (Determined by the page) --%>
+        <nav class="navbar navbar-inverse" style="display: block !important; width: 100%; margin-bottom:0px !important;">
+            <div class="container-fluid">
+                <div style="width: 90%; display: inline-block;">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-left navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+
+                        <a class="navbar-brand" style="font-size: 16px !important;" href="../../Default.aspx">
+                            <img class="headerLogo" runat="server" style="display: inline; height: 1em;" title="shanghai-logo" src="~/images/shanghai-horizontal.png" />
+                            &nbsp; Shanghai Leduc</a>
+                    </div>
+
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <p class="navbar-text">
+                            Hello, <asp:Label Text="" ID="HelloLabel" runat="server" /></p>
+                        <ul class="nav navbar-nav">
+                            <li><a runat="server" href="~/BackEnd_Page/ViewSchedule.aspx">Scheduling</a></li>
+                            <li><a id="A0" runat="server" href="#" class="dropdown-toggle" data-toggle="dropdown">Admin<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                  <li><a runat="server" id="A1" href="~/BackEnd_Page/Add_Employee">Employee Management</a></li>
+                                  <li><a runat="server" id="A2" href="~/BackEnd_Page/EditMenuItem.aspx">Menu Item Management</a></li>
+                                    <li><a runat="server" id="A3" href="~/BackEnd_Page/Edit_Job_Types">Job Type Management</a></li>
+                                    <li><a runat="server" id="A4" href="~/BackEnd_Page/Report.aspx">Report</a></li>
+                                </ul>
+                            </li>
+                            <li><a runat="server" href="~/BackEnd_Page/Lookup_Order.aspx">Lookup an Order</a></li>
+                            <li><a runat="server" href="~/Account/ManagePassword">Settings <i class="fa fa-cog"></i></a></li>
+                            
+                            <li><a runat="server" href="#" onserverclick="LogOut">Log Out</a></li>
+                        </ul>
+                </div>
+            </div>
+            <!--/.nav-collapse -->
+            </div>
+            <!--/.container-fluid -->
+        </nav>
+    <main>
+    <div>
+        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            
+        </asp:ContentPlaceHolder>
+    </div>
+    </main>
+
+
+    <%-- This is where the footer will be --%>
+     <footer class="navbar navbar-inverse navbar-bottom" style="margin-bottom:0px !important; text-align:center; height:50px">
+            <div class="container-fluid" style="display:inline-block; margin:0 auto;">
+
+            <p class="navbar-text">Shanghai Leduc - 2018 &copy;</p>
+  </div>
+        </footer>
+    </form>
+</body>
+</html>

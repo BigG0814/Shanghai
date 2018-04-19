@@ -1,0 +1,164 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="FrontFacing.master.cs" Inherits="Shanghai.WebApp.FrontFacing" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shanghai Leduc</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="~/Content/masterstyles.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/font-awesome.css" rel="stylesheet" type="text/css" />
+    <%--FONT LINKS--%>
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" />
+    <style>
+        #cartBtn:hover{
+            color: #FFFFFF;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body style="padding-top: 50px;">
+    <form id="form1" runat="server">
+        <asp:ScriptManager runat="server" ID="ScriptManager1">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="respond" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+                <asp:ScriptReference Path="~/Scripts/main.js" />
+            </Scripts>
+        </asp:ScriptManager>
+
+
+        <%-- This is where you should place your header code --%>
+        <%--                <header>
+                    <div class="red-bkg">
+                        <div class="container clearfix headerContainer">
+                            <img class="headerLogo" runat="server" title="shanghai-logo" src="~/images/shanghai-horizontal.png" />
+
+                            <div class="pageTitle">
+                                <h2>Welcome To <span>Shanghai Leduc</span></h2>
+                            </div>
+
+                            <div class="shopping-cart">
+                                <a href="ViewCart.aspx" class="shoppingcart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+                                <div class="cartInfo">
+                                    <p class="items"><%=itemCount %> items in cart</p>
+                                    <p class="total">$<%=priceTotal %> total</p>
+                                </div>
+                                <asp:Button class="cartBtn btn btn-success" ID="viewCart" Text="View Cart" runat="server" PostBackUrl="~/FrontEnd_Pages/ViewCart.aspx" />
+                            </div>
+
+                            <a href="#" class="menu-btn"><i class="fa fa-bars" aria-hidden="true"></i></a>
+                            <nav class="clearfix">
+                                <ul runat="server" class="clearfix">
+                                    <li><a runat="server" href="~/">Home</a></li>
+
+                                    <li><a runat="server" href="~/FrontEnd_Pages/Menu">Menu/Order Online</a></li>
+                                    <li><a runat="server" href="~/FrontEnd_Pages/Location.aspx">Location</a></li>
+                                    <li><a runat="server" href="~/FrontEnd_Pages/ContactUs.aspx">Contact Us</a></li>
+                                    <li id="Menu_LogIn" runat="server"><a runat="server" href="~/Account/Login">Log In <i class="fa fa-sign-in"></i></a></li>
+                                    <li id="Menu_LogOut" runat="server"><a runat="server" href="#" onserverclick="LogOut">Log Out <i class="fa fa-sign-out"></i></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+
+                </header>--%>
+        <!--Toggle for hamburger menu -->
+        <%--                <script>
+                    $('.menu-btn').click(function (e) {
+
+                        $('nav').toggle();
+                        e.preventDefault();
+                    })
+                </script>--%>
+
+        <nav class="navbar navbar-inverse navbar-fixed-top" style="display: block !important;">
+            <div class="container-fluid">
+                <div style="width: 90%; display: inline-block;">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-left navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+
+                        <a class="navbar-brand" style="font-size: 16px !important;" href="#">
+                            <img class="headerLogo" runat="server" style="display: inline; height: 1em;" title="shanghai-logo" src="~/images/shanghai-horizontal.png" />
+                            &nbsp; Shanghai Leduc</a>
+                    </div>
+
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a runat="server" href="~/">Home</a></li>
+                            <li><a runat="server" href="~/FrontEnd_Pages/Menu">Menu</a></li>
+                            
+                            <li><a runat="server" href="~/FrontEnd_Pages/ContactUs.aspx">Contact Us</a></li>
+<%--                            <li id="Menu_LogIn" runat="server"><a runat="server" href="~/Account/Login">Log In <i class="fa fa-sign-in"></i></a></li>
+                            <li id="Menu_LogOut" runat="server"><a runat="server" href="#" onserverclick="LogOut">Log Out <i class="fa fa-sign-out"></i></a></li>--%>
+                        </ul>
+                        <div class="navbar-form navbar-right">
+                            <div class="form-group">
+                                <i class="fa fa-shopping-cart" style="color: #9d9d9d; display: inline;" aria-hidden="true"></i>
+                                    <p class="items" style="display: inline; color: #9d9d9d;">&nbsp; <%=itemCount %> items in cart</p>
+                                    <br />
+                                    <p class="total" style="display: inline; color: #9d9d9d;">$<%=priceTotal %> Total</p>
+                            </div>
+                            <a href="~/FrontEnd_Pages/ViewCart.aspx" class="btn btn-default" runat="server">Check Out</a>
+                            
+                    </div>
+                </div>
+            </div>
+            <!--/.nav-collapse -->
+            </div>
+            <!--/.container-fluid -->
+        </nav>
+        <%-- This is the webpage body (Determined by the page) --%>
+        <main>
+            <div>
+                <div id="wrap">
+                    <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+        </main>
+
+
+        <%-- This is where the footer will be --%>
+        <footer class="navbar navbar-inverse navbar-bottom" style="margin-bottom:0px !important; text-align:center; height:50px">
+            <div class="container-fluid" style="display:inline-block; margin:0 auto;">
+
+            <p class="navbar-text">Shanghai Leduc - 2018 &copy;</p>
+                <ul class="nav navbar-nav">
+                            <li id="Menu_BackEnd" runat="server"><a runat="server" href="~/BackEnd_Page/ViewSchedule">Employee Access</a></li>
+                            <li id="Menu_LogIn" runat="server"><a runat="server" href="~/Account/Login">Log In <i class="fa fa-sign-in"></i></a></li>
+                            <li id="Menu_LogOut" runat="server"><a runat="server" href="#" onserverclick="LogOut">Log Out <i class="fa fa-sign-out"></i></a></li>
+                        </ul>
+  </div>
+        </footer>
+    </form>
+</body>
+</html>
